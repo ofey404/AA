@@ -134,13 +134,13 @@ def gen_duel(duel_string: str) -> str:
         return objects[0].description
     return __stringfy_duel(objects)
 
-def __stringfy_race(racers):
+def __stringfy_race(racers) -> str:
     ans = []
     ans.append("[collapse=竞速骰点]")
     racer_count = len(racers)
     for i, racer in enumerate(racers):
         ans.append(racer.description)
-        ans.append("[dice]d{}+{}+{}[/dice]".format(100 - racer.speed(), racer.speed(), 20*(racer_count-i-1)))
+        ans.append("[dice]d{}+{}+{}[/dice]".format(100 - racer.speed(), racer.speed(), 15*(racer_count-i-1)))
     ans.append("[/collapse]")
     return "\n\n".join(ans)
         
@@ -179,6 +179,31 @@ def parse_duel(duel_string: str) -> str:
         else:
             assert isinstance(obj, RollResult)
     return __stringfy_parse_duel(objects)
+
+def __stringfy_duel_detail(racers) -> str:
+    ans = []
+    dogfight = len(racers) > 2
+    ans.append("[collapse=决斗细节]")
+    if dogfight:
+        ans.append("多人混战（攻击+防御）：")
+    else:
+        ans.append("决斗（攻击）：")
+    for r in racers:
+        ans.append(r.description)
+        if dogfight:
+            base = r.attack() + r.defence()
+        else:
+            base = r.attack()
+        ans.append("[dice]d{}+{}[/dice]".format(100 - base, base))
+    ans.append("[/collapse]")
+    return "\n\n".join(ans)
+
+def gen_duel_detail(string: str) -> str:
+    objects = __parse_item_from_raw_string(string)
+    for obj in objects:
+        assert isinstance(obj, Racer)
+    return __stringfy_duel_detail(objects)
+
 
 
 def read_stdin_as_string() -> str:
