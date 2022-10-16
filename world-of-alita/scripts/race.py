@@ -187,13 +187,18 @@ def __stringfy_duel_detail(racers) -> str:
     if dogfight:
         ans.append("多人混战（攻击+防御）：")
     else:
-        ans.append("决斗（攻击）：")
+        ans.append("决斗（攻击 vs 防御）：")
+    defender = True
     for r in racers:
         ans.append(r.description)
         if dogfight:
             base = r.attack() + r.defence()
         else:
-            base = r.attack()
+            if defender:
+                base = r.defence()
+                defender = False
+            else:
+                base = r.attack()
         ans.append("[dice]d{}+{}[/dice]".format(100 - base, base))
     ans.append("[/collapse]")
     return "\n\n".join(ans)
