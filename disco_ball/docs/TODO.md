@@ -1,11 +1,10 @@
 Design Note V0.0.1
 ==================
 
-
 ## TODO
 
-- [ ] What markup language does NGA use?
-- [ ] User Portrait
+- [x] What markup language does NGA use?
+- [x] User Portrait
 - [ ] Use Case
 - [ ] DFD
 - [ ] Technology Selection
