@@ -1,0 +1,23 @@
+ID:
+  __type__: ID
+Name:
+  full:
+    __type__: str
+  short:
+    __type__: str
+  inline:
+    __type__: str
+AbilityScore:
+  firepower:
+    __type__: Uint
+  melee:
+    __type__: Uint
+  armor:
+    __type__: Uint
+  agility:
+    __type__: Uint
+Upgrade:
+  __type__: Range
+
+
+

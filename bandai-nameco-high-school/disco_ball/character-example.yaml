@@ -1,0 +1,15 @@
+ID: "GP-03"  // This ID should not change during the whole game!
+Name:
+    full: "GP03"
+    short: "03"
+    inline: "03"
+AbilityScore:
+    firepower: 6
+    melee: 5
+    armor: 4
+    agility: 5
+Equipment:
+    Hyper-baz:
+        __type__: ""
+        __path__: "/equip/hyper-bazooka.yaml"
+        
