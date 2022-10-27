@@ -22,7 +22,3 @@ Use define:
 - Event Schema
 - Output Format
 
-
-
-
-
